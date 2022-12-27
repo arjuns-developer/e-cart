@@ -12,8 +12,11 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-
+    font-family: 'Aclonica';
+    font-size: 25px;
 }
+
+
 
 .header input {
     width: 100%;
@@ -61,20 +64,33 @@ body {
 }
 
 .container {
+    background-color: #f1f3f6;
     padding: 2em 3em;
     display: flex;
 }
 
 .filter-container {
     flex: 1;
-    margin: 0rem 1rem;
+    padding: 2rem 1rem;
+    font-family: sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    margin-right: 20px;
+    background-color: white;
+    border-radius: 0.3em;
+    height: fit-content;
 }
 
 .products-container {
-    flex: 3;
+    flex: 4;
     display: flex;
     gap: 2em 1em;
     flex-wrap: wrap;
+    justify-content: center;
+    padding: 1rem 1rem;
+    background-color: white;
+    border-radius: 0.3em;
+
 
 }
 
@@ -82,19 +98,34 @@ body {
     width: 300px;
     height: 300px;
     margin-bottom: 1em;
+    object-fit: fill;
 }
 
 .product-tile {
     display: flex;
     flex-direction: column;
     align-items: center;
-    flex-basis: 400px;
+    flex-basis: 300px;
+    font-family: sans-serif;
+    font-size: 0.8em;
+    text-align: center;
 
+}
+
+.product-title {
+    margin-bottom: .5em;
+    font-weight: 600;
+    font-size: .8em;
+
+    white-space: nowrap;
+    width: 300px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 select {
     width: 100%;
-    padding: 12px 20px;
+    padding: 7px 10px;
     margin: 8px 0;
     display: inline-block;
     border: 1px solid #ccc;
@@ -108,10 +139,27 @@ select {
     gap: 0.5em;
 }
 
+.price-range span{
+    font-size: .9em;
+    color: #a3a3a3;
+}
+
 .filter-category {
     margin-bottom: 1rem;
 }
 
-.price{
+.filter-category div{
+    
+    font-size: 1.4em;
+    font-weight: 500;
+    margin-bottom: 1.3em;
+}
+
+
+.price {
     color: #388e3c;
+}
+
+.box-shadow{
+    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
 }

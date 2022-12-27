@@ -31,10 +31,12 @@
     </div>
 
     <div class="container">
-        <div class="filter-container">
+        <div class="filter-container box-shadow">
             <div class="filter-category">
-                <span>Select Category</span>
-                <select id="country" name="country">
+                <div>Filters</div>
+                <span>SELECT CATEGORY</span>
+                <select onchange="productObj.filterData(event)" id="category-filter" name="category-filter">
+                    <option value="">Select Category</option>
                     <option value="Electronics">Electronics</option>
                     <option value="Luggage">Luggage</option>
                     <option value="Furniture">Furniture</option>
@@ -48,16 +50,16 @@
                 </select>
             </div>
             <div>
-                <span>Price Range</span>
+                <span>PRICE RANGE</span>
                 <div class="price-range">
-                    <select onchange="handlePriceRange()" id="start-price" name="price">
+                    <select onchange="productObj.handlePriceRange()" id="start-price" name="price">
                         <option value="100">₹ 100</option>
                         <option value="1000">₹ 1000</option>
                         <option value="10000">₹ 10000</option>
                         <option value="100000">₹ 100000</option>
                     </select>
                     <span>to</span>
-                    <select onchange="handlePriceRange()" id="end-price" name="price">
+                    <select onchange="productObj.handlePriceRange()" id="end-price" name="price">
                         <option value="1000">₹ 1000</option>
                         <option value="10000">₹ 10000</option>
                         <option value="100000">₹ 100000</option>
@@ -67,9 +69,7 @@
             </div>
 
         </div>
-        <div class="products-container" id="products-container-id">
-           
-            
+        <div class="products-container box-shadow" id="products-container-id">
         </div>
     </div>
 </body>
