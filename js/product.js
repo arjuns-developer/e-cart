@@ -17,6 +17,11 @@ class Product {
 
     displayData(products) {
         let tab = '';
+        if(!products?.length){
+            tab='<div class="no-results">No Results found!</div>'
+            document.getElementById('products-container-id').innerHTML = tab;
+            return
+        }
         products.forEach(({ title, price, image }) => {
 
             tab += ` <div class="product-tile">
@@ -29,29 +34,44 @@ class Product {
         })
     }
 
-    filterData(e) {
+    categoryFilter(products) {
 
         const filter = document.getElementById("category-filter").value
         if(filter){
             const filteredList = this.products.filter(({ category }) => category === filter)
-            return this.displayData(filteredList)
+            return filteredList
         }
-        this.displayData(this.products)
+
+        return products
     }
 
-    handlePriceRange(){
+    handlePriceRange(products){
         const startPrice=parseInt(document.getElementById('start-price').value)
-        const endPrice=parseInt(document.getElementById('end-price').value)
+        let endPrice=parseInt(document.getElementById('end-price').value)
     
-        const max=100000
         if(startPrice>=endPrice){
-            const computedValues=startPrice*10>max?'max':startPrice*10
-            document.getElementById('end-price').value=computedValues.toString()
+            endPrice=startPrice*10
+            document.getElementById('end-price').value=endPrice.toString()
         }
         
-        // const filteredPrices=this.products.filter(({ price }) => price>=startPrice && price<=endPrice)
-        // console.log("🚀 ~ file: product.js:54 ~ Product ~ handlePriceRange ~ filteredPrices", filteredPrices)
-    
+        const filteredList = products.filter(({ price }) => price>=startPrice && price<=endPrice)
+        return filteredList
+
+    }
+
+    handleFilter(){
+        const filteredCategory=this.categoryFilter(this.products)
+        const finalData=this.handlePriceRange(filteredCategory)
+        this.displayData(finalData)
+    }
+
+    handleSearch(e){
+        // setTimeout(() => {
+        //     console.log(e.target.value,'event');
+        // }, 2000);
+        const search=e.target.value.toLowerCase()
+        const result=this.products.filter(({title})=>title.toLowerCase().includes(search))
+        this.displayData(result)
     }
 
 }
