@@ -1,17 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <script src="js/header.js" type="text/javascript" defer></script>
+
+    <script src="js/product.js" type="text/javascript" defer></script>
+
     <link href='https://fonts.googleapis.com/css?family=Aclonica' rel='stylesheet'>
     <link rel="stylesheet" href="./css/product-listing.css">
-<title>E-cart</title>
+    <title>E-cart</title>
+
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
+
 <body>
-    <div>E-cart</div>
+    <div class="header">
+        <span class="logo">E-cart</span>
+       
+        <div class="input-search">
+            <input onchange="productObj.handleSearch(event)" placeholder="Search Products..." />
+            <!-- <span onclick="alert()" class="material-symbols-outlined">
+                search
+            </span> -->
+        </div>
+        <span class="material-symbols-outlined cart">
+            shopping_cart
+        </span>
+    </div>
+
+    <div class="container">
+        <div class="filter-container box-shadow">
+            <div class="filter-category">
+                <div>Filters</div>
+                <span>SELECT CATEGORY</span>
+                <select onchange="productObj.handleFilter(event)" id="category-filter" name="category-filter">
+                    <option value="">Select Category</option>
+                    <option value="Electronics">Electronics</option>
+                    <option value="Luggage">Luggage</option>
+                    <option value="Furniture">Furniture</option>
+                    <option value="Kitchen Appliances">Kitchen Appliances</option>
+                    <option value="Sports and Fitness">Sports and Fitness</option>
+                    <option value="Beauty">Beauty</option>
+                    <option value="Books">Books</option>
+                    <option value="Home Improvement">Home Improvement</option>
+                    <option value="Groceries">Groceries</option>
+
+                </select>
+            </div>
+            <div>
+                <span>PRICE RANGE</span>
+                <div class="price-range">
+                    <select onchange="productObj.handleFilter()" id="start-price" name="price">
+                        <option value="10">₹ 10</option>
+                        <option value="100">₹ 100</option>
+                        <option value="1000">₹ 1000</option>
+                        <option value="10000">₹ 10000</option>
+                        <option value="100000">₹ 100000</option>
+                    </select>
+                    <span>to</span>
+                    <select onchange="productObj.handleFilter()" id="end-price" name="price">
+                        <option value="100">₹ 100</option>
+                        <option value="1000">₹ 1000</option>
+                        <option value="10000">₹ 10000</option>
+                        <option value="100000">₹ 100000</option>
+                        <option selected="selected" value="1000000">₹ 100000+</option>
+                    </select>
+                </div>
+            </div>
+
+        </div>
+        <div class="products-container box-shadow" id="products-container-id">
+        </div>
+    </div>
 </body>
 
 

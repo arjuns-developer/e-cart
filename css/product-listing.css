@@ -1,3 +1,165 @@
 body {
-    font-family: 'Aclonica';font-size: 22px;
+    font-size: 22px;
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+
+    background-color: #2874f0;
+    padding: 15px 50px;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Aclonica';
+    font-size: 25px;
+}
+
+
+
+.header input {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+
+}
+
+.input-search {
+    flex-grow: 1;
+}
+
+
+
+.logo {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    font-size: 1.3em;
+}
+
+
+.cart {
+    display: flex !important;
+    justify-content: center;
+    flex: 1;
+    font-size: 2em !important;
+}
+
+.material-symbols-outlined {
+    font-variation-settings:
+        'FILL' 1,
+        'wght' 700,
+        'GRAD' 0,
+        'opsz' 48,
+
+}
+
+.material-symbols-outlined {
+    font-size: 50px;
+}
+
+.container {
+    background-color: #f1f3f6;
+    padding: 2em 3em;
+    display: flex;
+}
+
+.filter-container {
+    flex: 1;
+    padding: 2rem 1rem;
+    font-family: sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    margin-right: 20px;
+    background-color: white;
+    border-radius: 0.3em;
+    height: fit-content;
+}
+
+.products-container {
+    flex: 4;
+    display: flex;
+    gap: 2em 1em;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 1rem 1rem;
+    background-color: white;
+    border-radius: 0.3em;
+
+
+}
+
+.product-image {
+    width: 300px;
+    height: 300px;
+    margin-bottom: 1em;
+    object-fit: fill;
+}
+
+.product-tile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-basis: 300px;
+    font-family: sans-serif;
+    font-size: 0.8em;
+    text-align: center;
+
+}
+
+.product-title {
+    margin-bottom: .5em;
+    font-weight: 600;
+    font-size: .8em;
+
+    white-space: nowrap;
+    width: 300px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+select {
+    width: 100%;
+    padding: 7px 10px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.price-range {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+}
+
+.price-range span{
+    font-size: .9em;
+    color: #a3a3a3;
+}
+
+.filter-category {
+    margin-bottom: 1rem;
+}
+
+.filter-category div{
+    
+    font-size: 1.4em;
+    font-weight: 500;
+    margin-bottom: 1.3em;
+}
+
+
+.price {
+    color: #388e3c;
+}
+
+.box-shadow{
+    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
 }
