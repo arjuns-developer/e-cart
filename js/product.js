@@ -3,6 +3,10 @@ class Product {
         this.products = []
     }
 
+    /**
+   * @property {Function} Fetches all products from the API and displays the products
+   * @returns {void}
+   */
     async fetchProducts() {
         try {
             const response = await fetch('https://arjuns-developer.github.io/e-cart-json/db.json')
@@ -15,6 +19,10 @@ class Product {
 
     }
 
+    /**
+   * @property {Function} Displays products on the DOM
+   * @returns {void}
+   */
     displayData(products) {
         let tab = '';
         if(!products?.length){
@@ -34,8 +42,11 @@ class Product {
         })
     }
 
+     /**
+   * @property {Function} Filters products based on category seleted
+   * @returns {void} Returns array of products
+   */
     categoryFilter(products) {
-
         const filter = document.getElementById("category-filter").value
         if(filter){
             const filteredList = this.products.filter(({ category }) => category === filter)
@@ -45,6 +56,10 @@ class Product {
         return products
     }
 
+    /**
+   * @property {Function} Filters products based on price range 
+   * @returns {void} Returns array of products
+   */
     handlePriceRange(products){
         const startPrice=parseInt(document.getElementById('start-price').value)
         let endPrice=parseInt(document.getElementById('end-price').value)
@@ -59,16 +74,22 @@ class Product {
 
     }
 
+     /**
+   * @property {Function} wrapper function for category filter and price range
+   * @returns {void} 
+   */
     handleFilter(){
         const filteredCategory=this.categoryFilter(this.products)
         const finalData=this.handlePriceRange(filteredCategory)
         this.displayData(finalData)
     }
 
+
+       /**
+   * @property {Function} Searches the product and displays the data on DOM
+   * @returns {void} 
+   */
     handleSearch(e){
-        // setTimeout(() => {
-        //     console.log(e.target.value,'event');
-        // }, 2000);
         const search=e.target.value.toLowerCase()
         const result=this.products.filter(({title})=>title.toLowerCase().includes(search))
         this.displayData(result)
