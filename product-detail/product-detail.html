@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Detail</title>
+
+    <script src="js/product-detail.js" type="module" defer></script>
+    <link rel="stylesheet" href="./css/product-detail.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Anton&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Playfair+Display&family=Roboto+Mono:wght@300&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+    <link href='https://fonts.googleapis.com/css?family=Aclonica' rel='stylesheet'>
+
+<body>
+    <div class="header">
+        <a href="../index.html">
+            <span class="logo">E-cart</span>
+        </a>
+
+        <div class="input-search">
+            <input id="search" placeholder="Search Products..." />
+            <!-- <span onclick="alert()" class="material-symbols-outlined">
+                search
+            </span> -->
+        </div>
+        <span class="material-symbols-outlined cart">
+            shopping_cart
+        </span>
+    </div>
+    <div class="container">
+        <div id="product-image" class="product-image"></div>
+        <div class="product-detail">
+            <div class="product-detail-info" id="product-detail-info">
+                <div class="title">Iphone</div>
+                <div class="price">₹10000</div>
+                <div class="stock">In Stock</div>
+                <div class="description">
+                    <span>Features And Details</span>
+                    <div class="description-content">
+                        Hygienically packed
+                        Premium quality product
+                    </div>
+                </div>
+            </div>
+
+            <div class="quantity">
+                <button id="minus-button"><img src="./images/minus-bulecolor.svg"></button>
+                <span id="quantity-id">1</span>
+                <button id="plus-button"><img src="./images/plus-bluecolor.svg"></button>
+            </div>
+
+            <div class="cart-section">
+                <button>Add to Cart</button>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>
