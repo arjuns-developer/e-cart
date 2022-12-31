@@ -109,7 +109,6 @@ export default class Products {
 
     getProduct(productId) {
         const result = this.products.find(({ id }) => id === productId)
-        console.log("🚀 ~ file: product.js:111 ~ Products ~ getProduct ~ result", result);
         return result
     }
 

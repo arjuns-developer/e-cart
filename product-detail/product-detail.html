@@ -23,7 +23,9 @@
 
 <body>
     <div class="header">
-        <span class="logo">E-cart</span>
+        <a href="../index.html">
+            <span class="logo">E-cart</span>
+        </a>
 
         <div class="input-search">
             <input id="search" placeholder="Search Products..." />
@@ -38,7 +40,7 @@
     <div class="container">
         <div id="product-image" class="product-image"></div>
         <div class="product-detail">
-            <div class="product-detail-info">
+            <div class="product-detail-info" id="product-detail-info">
                 <div class="title">Iphone</div>
                 <div class="price">₹10000</div>
                 <div class="stock">In Stock</div>
@@ -52,9 +54,9 @@
             </div>
 
             <div class="quantity">
-                <button><img onclick="alert()" src="./images/minus-bulecolor.svg"></button>
-                <span>1</span>
-                <button><img onclick="alert()" src="./images/plus-bluecolor.svg"></button>
+                <button id="minus-button"><img src="./images/minus-bulecolor.svg"></button>
+                <span id="quantity-id">1</span>
+                <button id="plus-button"><img src="./images/plus-bluecolor.svg"></button>
             </div>
 
             <div class="cart-section">

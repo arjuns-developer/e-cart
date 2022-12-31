@@ -62,9 +62,9 @@ body {
     cursor: pointer;
 }
 
-.cart-section .disabled {
+.disabled {
     opacity: 0.65;
-    cursor: not-allowed;
+    cursor: not-allowed !important;
 }
 
 .description-content {
@@ -73,16 +73,16 @@ body {
 }
 
 .header {
-
     background-color: #2874f0;
-    padding: 15px 50px;
+    padding: 15px 250px;
     color: #ffffff;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     font-family: 'Aclonica';
     font-size: 25px;
 }
+
 
 .logo {
     display: flex;
@@ -93,8 +93,6 @@ body {
 
 .cart {
     display: flex !important;
-    justify-content: center;
-    flex: 1;
     font-size: 2em !important;
 }
 
@@ -128,17 +126,31 @@ body {
 
 
 .quantity{
-    margin-bottom: .5em;
+    margin-bottom: 0.6em;
     display: flex;
     align-items: center;
 }
 
 .quantity span{
-    margin: 0em 1em;
+    margin: 0em 0.2em;
 }
 
 .quantity button{
     border: 0;
     background: inherit;
     cursor: pointer;
+}
+
+.description-content li{
+    margin-bottom: 1em;
+}
+
+.header  a{
+    text-decoration: none;
+    color: inherit;
+}
+
+.input-search{
+    position: absolute;
+    left: -999em;
 }
