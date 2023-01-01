@@ -11,7 +11,7 @@ export default class Products {
         document.getElementById('end-price')?.addEventListener('change', this.handleFilter.bind(this));
         document.getElementById('search')?.addEventListener('change', this.handleSearch.bind(this));
 
-
+        this.displayCartData()
     }
 
 
@@ -110,6 +110,43 @@ export default class Products {
     getProduct(productId) {
         const result = this.products.find(({ id }) => id === productId)
         return result
+    }
+
+
+    displayCartData() {
+        const dropdownContent = document.getElementById('dropdown-content')
+
+        let tab=''
+
+        const cartItems = localStorage.getItem('cartItems')
+
+        if (cartItems) {
+            
+            const cart = JSON.parse(cartItems)
+
+            cart.forEach(({ title, price,quantity }) => {
+                tab += `<div class="cart-tile"> 
+                            <span class="cart-title">${title}</span>
+                            <span class="cart-quantity"> x ${quantity} = </span>
+                            <span class="cart-price">₹ ${price*quantity} /-</span>
+                        </div>`;
+
+                if (dropdownContent) {
+                    dropdownContent.innerHTML = tab;
+                }
+            })
+
+            const totalPrice=cart.reduce((acc,cur)=>{
+                acc=acc+cur.price*cur.quantity
+                return acc
+            },0)
+
+            const div=dropdownContent.appendChild(document.createElement('div'))
+            div.classList.add("cart-total");
+            div.innerHTML=`<hr/>Total Amount - <span class="cart-price">₹${totalPrice}/-</span>`
+            const cartCount=document.getElementById('cart-count')
+            cartCount.innerHTML=cart.length
+        }
     }
 
 }
