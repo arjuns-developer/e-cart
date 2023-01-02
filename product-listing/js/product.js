@@ -10,6 +10,11 @@ export default class Products {
         document.getElementById('start-price')?.addEventListener('change', this.handleFilter.bind(this));
         document.getElementById('end-price')?.addEventListener('change', this.handleFilter.bind(this));
         document.getElementById('search')?.addEventListener('change', this.handleSearch.bind(this));
+        document.getElementById('quantity-id')?.addEventListener('keyup', this.handleQuantityInput.bind(this));
+
+        document.getElementById('cart')?.addEventListener('mouseover', this.handleHower.bind(this))
+
+        document.getElementById('dropdown-content')?.addEventListener('mouseover', this.handleHower.bind(this))
 
         this.displayCartData()
     }
@@ -115,20 +120,23 @@ export default class Products {
 
     displayCartData() {
         const dropdownContent = document.getElementById('dropdown-content')
-
-        let tab=''
+        let tab = ''
 
         const cartItems = localStorage.getItem('cartItems')
+        const cart = JSON.parse(cartItems)
+
+        const cartCount = document.getElementById('cart-count')
+        cartCount.innerHTML = cart?.length||''
 
         if (cartItems) {
-            
-            const cart = JSON.parse(cartItems)
 
-            cart.forEach(({ title, price,quantity }) => {
+
+            cart.forEach(({ title, price, quantity, id }) => {
                 tab += `<div class="cart-tile"> 
                             <span class="cart-title">${title}</span>
                             <span class="cart-quantity"> x ${quantity} = </span>
-                            <span class="cart-price">₹ ${price*quantity} /-</span>
+                            <span class="cart-price">₹ ${price * quantity} /-</span>
+                            <span id="delete" data-id=${id} class="material-symbols-outlined delete">delete</span>
                         </div>`;
 
                 if (dropdownContent) {
@@ -136,17 +144,64 @@ export default class Products {
                 }
             })
 
-            const totalPrice=cart.reduce((acc,cur)=>{
-                acc=acc+cur.price*cur.quantity
+            const totalPrice = cart.reduce((acc, cur) => {
+                acc = acc + cur.price * cur.quantity
                 return acc
-            },0)
+            }, 0)
 
-            const div=dropdownContent.appendChild(document.createElement('div'))
+
+            const div = dropdownContent.appendChild(document.createElement('div'))
             div.classList.add("cart-total");
-            div.innerHTML=`<hr/>Total Amount - <span class="cart-price">₹${totalPrice}/-</span>`
-            const cartCount=document.getElementById('cart-count')
-            cartCount.innerHTML=cart.length
+            div.innerHTML = `<hr/>Total Amount - <span class="cart-price">₹${totalPrice}/-</span>`
+
+
         }
+        else {
+
+            dropdownContent.innerHTML = `<span class="no-products">No Products Added</span>`
+        }
+
+    }
+
+    handleQuantityInput() {
+        const value = document.getElementById('quantity-id').value
+        let parsedValue = parseInt(value)
+        const max = 20
+        if (!value || parsedValue < 1) {
+            parsedValue = 1
+        }
+        if (parsedValue > max) {
+            parsedValue = max
+        }
+
+        document.getElementById('quantity-id').value = parsedValue
+    }
+
+    deleteCartItem(element) {
+        const dataId = element?.getAttribute('data-id')
+        if (dataId) {
+
+            const parsedId = parseInt(dataId)
+
+            const cartItems = localStorage.getItem('cartItems')
+            const cartArray = JSON.parse(cartItems) || []
+            const filteredData = cartArray.filter(({ id }) => parsedId != id)
+
+            if (filteredData.length === 0) {
+                localStorage.removeItem('cartItems')
+            }
+            else {
+                localStorage.setItem('cartItems', JSON.stringify(filteredData))
+            }
+            this.displayCartData()
+        }
+    }
+
+    handleHower() {
+
+        document.querySelectorAll('.delete').forEach(item => {
+            item.addEventListener('click', this.deleteCartItem.bind(this, item))
+        })
     }
 
 }

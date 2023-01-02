@@ -71,13 +71,15 @@ export default class Cart extends Products {
 
     handleQuantity(arg) {
         const idElement = document?.getElementById('quantity-id')
-        const quantity = parseInt(idElement?.innerText)
+
+        const quantity = parseInt(idElement?.value)
+
         if (quantity) {
             if (arg === 'minus-button' && quantity > 1) {
-                idElement.innerHTML = quantity - 1
+                idElement.value = quantity - 1
             }
             if (arg === 'plus-button') {
-                idElement.innerHTML = quantity + 1
+                idElement.value = quantity + 1
             }
         }
 
@@ -85,7 +87,7 @@ export default class Cart extends Products {
 
     handleAddtoCart() {
         const idElement = document?.getElementById('quantity-id')
-        const quantityAdded = parseInt(idElement?.innerText)
+        const quantityAdded = parseInt(idElement?.value)
         const data = this.getProductData()
         const isAvailable = this.checkAvailability(quantityAdded, data)
         if (isAvailable) {
@@ -125,7 +127,6 @@ export default class Cart extends Products {
             availableUnits = Math.abs(data.units - itemLength)
             return { availableUnits, isAvailable: false }
         }
-
     }
 
 

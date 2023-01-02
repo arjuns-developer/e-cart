@@ -36,11 +36,12 @@
 
 
         <div class="dropdown">
-            <span class="material-symbols-outlined cart ">
+            <span class="material-symbols-outlined cart" id="cart">
                 shopping_cart
             </span>
             <span id="cart-count" class="cart-count"></span>
             <div class="dropdown-content" id="dropdown-content">
+               <span class="no-products">No Products Added</span> 
             </div>
         </div>
 
@@ -63,7 +64,8 @@
 
             <div class="quantity">
                 <button id="minus-button"><img src="./images/minus-bulecolor.svg"></button>
-                <span id="quantity-id">1</span>
+                <!-- <span id="quantity-id">1</span> -->
+                <input class="quantity-input" id="quantity-id" value="1"/>
                 <button id="plus-button"><img src="./images/plus-bluecolor.svg"></button>
             </div>
 

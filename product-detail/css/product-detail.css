@@ -223,7 +223,7 @@ body {
 }
 
 .cart-total {
-    font-size: .8em;
+    font-size: .7em;
     font-family: sans-serif;
 }
 
@@ -241,6 +241,24 @@ body {
     font-size: .7em;
     font-weight: 700;
     /* height: 17px; */
+}
+
+.quantity-input {
+    width: 25px;
+    text-align: center;
+    height: 25px;
+    margin: 0em 0.4em;
+}
+
+.no-products {
+    font-size: .5em;
+    font-family: sans-serif;
+}
+
+.delete {
+    color: #a62020;
+    font-size: 23px;
+    cursor: pointer;
 }
 
 /*  */
