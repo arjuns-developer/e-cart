@@ -9,6 +9,12 @@ export default class Cart extends Products {
         document.getElementById('minus-button')?.addEventListener('click', this.handleQuantity.bind(this, 'minus-button'));
         document.getElementById('plus-button')?.addEventListener('click', this.handleQuantity.bind(this, 'plus-button'));
         document.getElementById('add-to-cart')?.addEventListener('click', this.handleAddtoCart.bind(this));
+
+        document.querySelector('.logo')?.addEventListener('click', this.redirect.bind(this));
+    }
+
+    redirect(){
+        window.location.href = "../index.html";
     }
 
     getProductData() {
