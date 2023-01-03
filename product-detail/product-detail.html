@@ -23,9 +23,7 @@
 
 <body>
     <div class="header">
-        <a href="../index.html">
             <span class="logo">E-cart</span>
-        </a>
 
         <div class="input-search">
             <input id="search" placeholder="Search Products..." />
@@ -35,14 +33,22 @@
         </div>
 
 
-        <div class="dropdown">
-            <span class="material-symbols-outlined cart" id="cart">
-                shopping_cart
-            </span>
-            <span id="cart-count" class="cart-count"></span>
-            <div class="dropdown-content" id="dropdown-content">
-               <span class="no-products">No Products Added</span> 
+        <div class="cart-user">
+            <div class="dropdown">
+                <span class="material-symbols-outlined cart " id="cart">
+                    shopping_cart
+                </span>
+                <span id="cart-count" class="cart-count"></span>
+                <div id="dropdown-content" class="dropdown-content">
+                    <span class="no-products">No Products Added</span>
+                </div>
             </div>
+
+            <span class="material-symbols-outlined user">
+                person
+            </span>
+            <span class="hide">John Doe</span>
+            
         </div>
 
     </div>
