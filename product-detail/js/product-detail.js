@@ -11,6 +11,7 @@ export default class Cart extends Products {
         document.getElementById('add-to-cart')?.addEventListener('click', this.handleAddtoCart.bind(this));
 
         document.querySelector('.logo')?.addEventListener('click', this.redirect.bind(this));
+        
     }
 
     redirect(){
