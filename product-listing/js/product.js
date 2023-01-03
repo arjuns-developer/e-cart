@@ -2,7 +2,17 @@ import fetchProducts from "../../utilis/fetchProducts.js";
 
 export default class Products {
     constructor(products) {
-        this.products = products
+
+        const query=this.getParams('search')
+
+        if (query) {
+            document.getElementById('search').value = query
+            const result = products.filter(({ title }) => title.toLowerCase().includes(query))
+            this.products = result
+
+        } else {
+            this.products = products
+        }
         this.displayData(this.products)
 
 
@@ -19,7 +29,12 @@ export default class Products {
         this.displayCartData()
     }
 
-
+    getParams(string){
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        return urlParams.get(string)
+        
+    }
 
     /**
      * @property {Function} Displays products on the DOM
@@ -107,8 +122,7 @@ export default class Products {
     */
     handleSearch(e) {
         const search = e.target.value.toLowerCase()
-        const result = this.products.filter(({ title }) => title.toLowerCase().includes(search))
-        this.displayData(result)
+        window.location.href = `/?search=${search}`
     }
 
 
@@ -126,7 +140,7 @@ export default class Products {
         const cart = JSON.parse(cartItems)
 
         const cartCount = document.getElementById('cart-count')
-        cartCount.innerHTML = cart?.length||''
+        cartCount.innerHTML = cart?.length || ''
 
         if (cartItems) {
 
