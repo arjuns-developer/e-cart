@@ -9,6 +9,8 @@
 
     <script src="js/product-detail.js" type="module" defer></script>
     <link rel="stylesheet" href="./css/product-detail.css">
+    <link rel="stylesheet" href="./css/alert.css">
+
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,7 +25,7 @@
 
 <body>
     <div class="header">
-            <span class="logo">E-cart</span>
+        <span class="logo">E-cart</span>
 
         <div class="input-search">
             <input id="search" placeholder="Search Products..." />
@@ -48,17 +50,21 @@
                 person
             </span>
             <span class="hide">John Doe</span>
-            
+
         </div>
 
     </div>
+
+    <div class="popup"></div>
     <div class="container">
-        <div id="product-image" class="product-image"></div>
+            <div id="product-image" class="product-image"></div>
         <div class="product-detail">
             <div class="product-detail-info" id="product-detail-info">
                 <div class="title">Iphone</div>
                 <div class="price">₹10000</div>
                 <!-- <div class="stock">In Stock</div> -->
+
+                
                 <div class="description">
                     <span>Features And Details</span>
                     <div class="description-content">
@@ -74,7 +80,7 @@
                 <input class="quantity-input" id="quantity-id" value="1"/>
                 <button id="plus-button"><img src="./images/plus-bluecolor.svg"></button>
             </div>
-
+            
             <div class="cart-section">
                 <button id="add-to-cart">Add to Cart</button>
             </div>

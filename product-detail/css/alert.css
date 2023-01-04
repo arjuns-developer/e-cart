@@ -1,0 +1,20 @@
+.alert {
+    position: absolute;
+    display: block;
+    background-color: black;
+    cursor: pointer;
+    top: 12%;
+    left: 50%;
+    font-size: 1.1rem;
+    font-family: sans-serif;
+    padding: 0.5em 0.9em;
+    font-weight: 600;
+    border-radius: 7px;
+    opacity: .8;
+    color: white;
+}
+
+.closebtn{
+    color:red;
+    padding-left: 10px;
+}
