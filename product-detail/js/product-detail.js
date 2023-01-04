@@ -40,10 +40,10 @@ export default class Cart extends Products {
 
             const productDetailElement = document.getElementById('product-detail-info')
 
-            let stock = `<div class="stock">In Stock</div>`
+            let stock = `<div id="availability" class="stock">In Stock</div>`
             const quantityInCart = this.getCartProductsById(id)?.quantity || 0
             if (units - quantityInCart < 1) {
-                stock = `<div class="no-stock">Not Available</div>`
+                stock = `<div id="availability" class="no-stock">Out of Stock</div>`
             }
 
             if (productDetailElement) {
@@ -148,6 +148,9 @@ export default class Cart extends Products {
             this.showAlert(`Only ${units} Units Available`)
         }
         else {
+            const element=document.querySelector('#availability')
+            element.className='no-stock'
+            element.innerHTML='Out of Stock'
             this.showAlert(`No Units Available`)
         }
     }
@@ -182,7 +185,7 @@ export default class Cart extends Products {
     hideAlert(){
         setTimeout(() => {
             document.querySelector('.alert').style.display='none'
-        }, 2000);
+        }, 1000);
     }
 
 }

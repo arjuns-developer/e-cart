@@ -10,6 +10,9 @@
 
     <link href='https://fonts.googleapis.com/css?family=Aclonica' rel='stylesheet'>
     <link rel="stylesheet" href="./product-listing/css/product-listing.css">
+
+    <link rel="stylesheet" href="./product-listing/css/price-range.css">
+
     <title>E-cart</title>
 
     <link rel="stylesheet"
@@ -43,7 +46,7 @@
                 person
             </span>
             <span class="hide">John Doe</span>
-            
+
         </div>
 
     </div>
@@ -51,7 +54,7 @@
     <div class="container">
         <div class="filter-container box-shadow">
             <div class="filter-category">
-                <div>Filters</div>
+                <div>FILTERS</div>
                 <span>SELECT CATEGORY</span>
                 <select id="category-filter" name="category-filter">
                     <option value="">Select Category</option>
@@ -69,7 +72,7 @@
             </div>
             <div>
                 <span>PRICE RANGE</span>
-                <div class="price-range">
+                <!-- <div class="price-range">
                     <select id="start-price" name="price">
                         <option value="10">₹ 10</option>
                         <option value="100">₹ 100</option>
@@ -85,8 +88,25 @@
                         <option value="100000">₹ 100000</option>
                         <option selected="selected" value="1000000">₹ 100000+</option>
                     </select>
+                </div> -->
+
+                <!-- Price range  -->
+
+                <div class="range-slider">
+                    <input type="range" id="start-price" class="min-price range-selector" value="10" min="10"
+                        max="200000">
+                    <input type="range" id="end-price" class="max-price range-selector" value="200000" min="10"
+                        max="200000">
+
+                    <div class="values">
+                        <span>₹ <span id="min-value">10</span></span>
+                        <span>₹ <span id="max-value">200000</span></span>
+                    </div>
                 </div>
+                <!--  -->
             </div>
+
+
 
         </div>
         <div class="products-container box-shadow" id="products-container-id"></div>

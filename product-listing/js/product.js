@@ -3,7 +3,7 @@ import fetchProducts from "../../utilis/fetchProducts.js";
 export default class Products {
     constructor(products) {
 
-        const query=this.getParams('search')
+        const query = this.getParams('search')
 
         if (query) {
             document.getElementById('search').value = query
@@ -17,8 +17,6 @@ export default class Products {
 
 
         document.getElementById('category-filter')?.addEventListener('change', this.handleFilter.bind(this));
-        document.getElementById('start-price')?.addEventListener('change', this.handleFilter.bind(this));
-        document.getElementById('end-price')?.addEventListener('change', this.handleFilter.bind(this));
         document.getElementById('search')?.addEventListener('change', this.handleSearch.bind(this));
         document.getElementById('quantity-id')?.addEventListener('keyup', this.handleQuantityInput.bind(this));
 
@@ -26,15 +24,46 @@ export default class Products {
 
         document.getElementById('dropdown-content')?.addEventListener('mouseover', this.handleHower.bind(this))
 
+
+        const inputElements = document.querySelectorAll(".range-selector");
+
+        inputElements.forEach((element) => {
+            element.addEventListener("change", (e) => {
+                let minPrice = parseInt(inputElements[0].value);
+                let maxPrice = parseInt(inputElements[1].value);
+
+                this.validateRange(minPrice, maxPrice);
+            });
+        });
+
         this.displayCartData()
     }
 
-    getParams(string){
+    getParams(string) {
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
         return urlParams.get(string)
-        
+
     }
+
+    validateRange(minPrice, maxPrice) {
+
+        let minValue = document.getElementById("min-value");
+        let maxValue = document.getElementById("max-value");
+
+        if (minPrice > maxPrice) {
+      
+          // Swap to Values
+          let tempValue = maxPrice;
+          maxPrice = minPrice;
+          minPrice = tempValue;
+        }
+      
+        minValue.innerHTML = minPrice;
+        maxValue.innerHTML = maxPrice;
+
+        this.handleFilter()
+      }
 
     /**
      * @property {Function} Displays products on the DOM
@@ -92,13 +121,18 @@ export default class Products {
      * @returns {void} Returns array of products
     */
     handlePriceRange(products) {
-        const startPrice = parseInt(document.getElementById('start-price').value)
-        let endPrice = parseInt(document.getElementById('end-price').value)
 
-        if (startPrice >= endPrice) {
-            endPrice = startPrice * 10
-            document.getElementById('end-price').value = endPrice.toString()
-        }
+        let startPrice = parseInt(document.getElementById("start-price")?.value)
+        let endPrice = parseInt(document.getElementById("end-price")?.value)
+
+
+         if (startPrice > endPrice) {
+
+            // Swap to Values
+            let tempValue = endPrice;
+            endPrice = startPrice;
+            startPrice = tempValue;
+          }
 
         const filteredList = products.filter(({ price }) => price >= startPrice && price <= endPrice)
         return filteredList

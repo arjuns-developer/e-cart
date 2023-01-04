@@ -15,7 +15,7 @@ body {
 }
 
 .product-image img {
-    width: 20em;
+    width: 30em;
 }
 
 .product-detail {
@@ -172,6 +172,11 @@ body {
 
 .input-search {
     flex-grow: 1;
+}
+
+.quantity-cart{
+    display: flex;
+    gap: 1.5em;
 }
 
 /* cart */
