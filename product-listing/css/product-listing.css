@@ -295,6 +295,12 @@ select {
     display: block;
 }
 
+
+.no-results{
+    display: flex;
+    font-family: sans-serif;
+    align-items: center;
+}
 /*  */
 
 /*  */
