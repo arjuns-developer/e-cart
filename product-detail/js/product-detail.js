@@ -145,10 +145,10 @@ export default class Cart extends Products {
 
     showValidationMsg(units) {
         if (units) {
-            alert(`only ${units} units available`)
+            this.showAlert(`Only ${units} Units Available`)
         }
         else {
-            alert(`No units available`)
+            this.showAlert(`No Units Available`)
         }
     }
 
@@ -157,11 +157,32 @@ export default class Cart extends Products {
         if (!this.getCartProductsById(data.id)) {
             cartArray.push({ ...data, 'quantity': quantity })
             localStorage.setItem('cartItems', JSON.stringify(cartArray))
+            this.showAlert(`Item added to cart`)
             return
         }
         const out = cartArray.map(item => item.id === data.id ? { ...item, quantity: item.quantity + quantity } : item)
 
         localStorage.setItem('cartItems', JSON.stringify(out))
+        this.showAlert(`Item added to cart`)
+    }
+
+    showAlert(msg,type){
+        const alert=`
+        <div class="alert">
+        ${msg}
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        </div>`
+
+        const element=document.querySelector('.popup')
+        element.innerHTML=alert
+
+        this.hideAlert()
+    }
+
+    hideAlert(){
+        setTimeout(() => {
+            document.querySelector('.alert').style.display='none'
+        }, 2000);
     }
 
 }
