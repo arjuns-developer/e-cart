@@ -1,6 +1,13 @@
 import fetchProducts from "../../utilis/fetchProducts.js";
 
+/**
+ * Class representing products.
+ */
 export default class Products {
+    /**
+     * Creates list of products
+     * @param {Object[]} The list of products
+     */
     constructor(products) {
 
         const query = this.getParams('search')
@@ -39,6 +46,11 @@ export default class Products {
         this.displayCartData()
     }
 
+    /**
+     * Function that returns the URL parameters
+     * @param {String} string - key of the parameters
+     * @returns {String} returns the URL parameters
+     */
     getParams(string) {
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
@@ -46,24 +58,29 @@ export default class Products {
 
     }
 
+    /**
+     * Function that sets the min and max value in DOM and then triggers the  price filter function
+     * @param {*} minPrice - minimum price selected
+     * @param {*} maxPrice - maximum price selected
+     */
     validateRange(minPrice, maxPrice) {
 
         let minValue = document.getElementById("min-value");
         let maxValue = document.getElementById("max-value");
 
         if (minPrice > maxPrice) {
-      
-          // Swap to Values
-          let tempValue = maxPrice;
-          maxPrice = minPrice;
-          minPrice = tempValue;
+
+            // Swap to Values
+            let tempValue = maxPrice;
+            maxPrice = minPrice;
+            minPrice = tempValue;
         }
-      
+
         minValue.innerHTML = minPrice;
         maxValue.innerHTML = maxPrice;
 
         this.handleFilter()
-      }
+    }
 
     /**
      * @property {Function} Displays products on the DOM
@@ -126,13 +143,13 @@ export default class Products {
         let endPrice = parseInt(document.getElementById("end-price")?.value)
 
 
-         if (startPrice > endPrice) {
+        if (startPrice > endPrice) {
 
             // Swap to Values
             let tempValue = endPrice;
             endPrice = startPrice;
             startPrice = tempValue;
-          }
+        }
 
         const filteredList = products.filter(({ price }) => price >= startPrice && price <= endPrice)
         return filteredList
@@ -158,14 +175,20 @@ export default class Products {
         const search = e.target.value.toLowerCase()
         window.location.href = `/?search=${search}`
     }
-
-
+    
+/**
+ * Function that returns the product based on id passes
+ * @param {number} id of product
+ * @returns {object} product object
+ */
     getProduct(productId) {
         const result = this.products.find(({ id }) => id === productId)
         return result
     }
 
-
+/**
+ * Function that displays the cart information
+ */
     displayCartData() {
         const dropdownContent = document.getElementById('dropdown-content')
         let tab = ''
@@ -211,6 +234,9 @@ export default class Products {
 
     }
 
+    /**
+     * Function that checks the prevents user from entering a value greater than the max value
+     */
     handleQuantityInput() {
         const value = document.getElementById('quantity-id').value
         let parsedValue = parseInt(value)
@@ -225,6 +251,10 @@ export default class Products {
         document.getElementById('quantity-id').value = parsedValue
     }
 
+    /**
+     * Delete Items from cart and trigers new data to to be displayed in cart
+     * @param {*} element - HTML element
+     */
     deleteCartItem(element) {
         const dataId = element?.getAttribute('data-id')
         if (dataId) {
@@ -245,8 +275,10 @@ export default class Products {
         }
     }
 
+    /**
+     * Adds an delete cart function to the cart element
+     */
     handleHower() {
-
         document.querySelectorAll('.delete').forEach(item => {
             item.addEventListener('click', this.deleteCartItem.bind(this, item))
         })
