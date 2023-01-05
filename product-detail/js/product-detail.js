@@ -1,7 +1,14 @@
 import fetchProducts from "../../utilis/fetchProducts.js";
 import Products from "../../product-listing/js/product.js";
 
+/**
+ * Class representing a cart.
+ */
 export default class Cart extends Products {
+    /**
+     * Creates list of products
+     * @param {*} products -list of products
+     */
     constructor(products) {
         super(products)
         this.handleProductDetail()
@@ -13,11 +20,17 @@ export default class Cart extends Products {
         document.querySelector('.logo')?.addEventListener('click', this.redirect.bind(this));
         
     }
-
+    /**
+     * Redirects to the home page
+     */
     redirect(){
         window.location.href = "../index.html";
     }
 
+    /**
+     * Function that returns the product detail based on the productId present in the parameter
+     * @returns - Product detail if found else null
+     */
     getProductData() {
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
@@ -30,6 +43,10 @@ export default class Cart extends Products {
         return null
     }
 
+    /**
+     * Function that displays the Product details
+     * @param {object} data - product object
+     */
     displayProduct(data) {
         if (data) {
             const { image, title, price, units, description, id } = data
@@ -71,11 +88,18 @@ export default class Cart extends Products {
 
     }
 
+    /**
+     * Function that displays product information
+     */
     handleProductDetail() {
         const data = this.getProductData()
         this.displayProduct(data)
     }
 
+    /**
+     * Function that displays the increment and decrement of the quantity 
+     * @param {string} arg - string argument 
+     */
     handleQuantity(arg) {
         const idElement = document?.getElementById('quantity-id')
 
@@ -92,6 +116,9 @@ export default class Cart extends Products {
 
     }
 
+    /**
+     * Functions that adds product to cart
+     */
     handleAddtoCart() {
         const idElement = document?.getElementById('quantity-id')
         const quantityAdded = parseInt(idElement?.value)
@@ -103,6 +130,12 @@ export default class Cart extends Products {
         }
     }
 
+    /**
+     * Function that checks the product availability
+     * @param {number} quantityAdded - quantity to be added
+     * @param {object} data - product data
+     * @returns whether it is available or not 
+     */
     checkAvailability(quantityAdded, data) {
         if (quantityAdded > data.units) {
             this.showValidationMsg(data.units)
@@ -116,11 +149,22 @@ export default class Cart extends Products {
         return true
     }
 
+    /**
+     * Function that returns the Product in the cart based on id
+     * @param {*} Pid - Product Id
+     * @returns Product 
+     */
     getCartProductsById(Pid) {
         const cartItems = this.getCartData()
         return cartItems?.find(({ id }) => Pid === id)
     }
 
+    /**
+     * Function that returns available units of a products after product is added in cart
+     * @param {object} data - product object
+     * @param {number} quantityAdded - quantity to be added
+     * @returns object which represents availabilty and available units
+     */
     getCartAvailableData(data, quantityAdded) {
         let availableUnits = 0
         const itemLength = this.getCartProductsById(data.id)?.quantity || 0
@@ -136,13 +180,20 @@ export default class Cart extends Products {
         }
     }
 
-
+    /**
+     * Function that returns cart items stored in local storage
+     * @returns cart items
+     */
     getCartData() {
         const cartItems = localStorage.getItem('cartItems')
         const cartArray = JSON.parse(cartItems) || []
         return cartArray
     }
 
+    /**
+     * Function that initiates message displaying based on the units available
+     * @param {number} units - units available
+     */
     showValidationMsg(units) {
         if (units) {
             this.showAlert(`Only ${units} Units Available`)
@@ -155,6 +206,11 @@ export default class Cart extends Products {
         }
     }
 
+    /**
+     * Saves the data to the localstorage 
+     * @param {object} data - product to be added to cart
+     * @param {number} quantity - quantity of product to be added
+     */
     addToCart(data, quantity) {
         const cartArray = this.getCartData()
         if (!this.getCartProductsById(data.id)) {
@@ -169,7 +225,11 @@ export default class Cart extends Products {
         this.showAlert(`Item added to cart`)
     }
 
-    showAlert(msg,type){
+    /**
+     * Function that displays a popup message 
+     * @param {*} msg - message to be displayed
+     */
+    showAlert(msg){
         const alert=`
         <div class="alert">
         ${msg}
@@ -182,6 +242,9 @@ export default class Cart extends Products {
         this.hideAlert()
     }
 
+    /**
+     * Hides the popup message after a time interval
+     */
     hideAlert(){
         setTimeout(() => {
             document.querySelector('.alert').style.display='none'
